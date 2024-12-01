@@ -1,0 +1,6 @@
+../Core/Inc/DC_MOTOR.c:5:6:DC_MOTOR_Init	192	static
+../Core/Inc/DC_MOTOR.c:88:6:DC_MOTOR_Start	16	static
+../Core/Inc/DC_MOTOR.c:121:6:DC_MOTOR_Set_Speed	16	static
+../Core/Inc/DC_MOTOR.c:142:6:DC_MOTOR_Set_Dir	16	static
+../Core/Inc/DC_MOTOR.c:157:6:DC_MOTOR_Stop	16	static
+../Core/Inc/DC_MOTOR.c:182:10:DC_MOTOR_Get_MaxFreq	24	static

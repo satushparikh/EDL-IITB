@@ -1,0 +1,89 @@
+<html style="background-color:rgb(229, 233, 182);">
+
+<!--
+	The following line is just for styling better on mobile devices.
+-->
+
+<head>
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<!-- Don 't worry about the following code, it just makes all the buttons on the webpage unselectable.
+	This is to avoid accidentally selecting the text on the button while pressing down on the buttton.
+-->
+<style>
+    h1 {
+        text-align: center;
+        font-size: 30px;
+    }
+    
+    .unselectable {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+</style>
+<h1 style="text-align: center; font-size: 30px; position: fixed; left: 40%;">EDL - Robot Vacuum Cleaner GUI</h1>
+<p style="font-size:20px ;position:fixed; left: 46.5%; bottom:70%">Autonomous</p>
+<p style="font-size:20px ;position:fixed; left: 54.5%; bottom:70%">Manual</p>
+
+<!--
+	We will now create a button. Holding this button down should make the LED glow and releasing it will turn it off.
+	The fields important to us here are the fields "ontouchstart" and "ontouchend". As you may have guessed from their
+	names, whenever we start touching the button, the function "on()" gets called. Similarly when we release the button
+	the function "off()" gets called. The on() and off() functions have the job to send commands to the ESP32 server to 
+	turn the LED on or off.
+-->
+<div style="text-align:center;">
+    <button class="unselectable" ontouchstart="stop_on()" style="position: fixed; left: 50%; bottom: 45%; height:100px;width:100px;color: blue; background: url('stop.jpg') no-repeat; background-size: 100px 100px;"></button>
+    <button class="unselectable" ontouchstart="auto_on()" style="position: fixed; left: 46.5%; bottom: 75%; height:100px;width:100px;color: blue;background: url('auto.jpg') no-repeat; background-size: 100px 100px;"></button>
+    <button class="unselectable" ontouchstart="manual_on()" style="position: fixed; left: 53.5%; bottom: 75%;height:100px;width:100px;color: blue;background: url('manual.jpg') no-repeat; background-size: 100px 100px;"></button>
+    <button class="unselectable" ontouchstart="fwd_on()" style="position: fixed;left: 50%; bottom: 60%; height:100px;width:100px;color: blue;background: url('up.jpg') no-repeat; background-size: 100px 100px;"></button>
+    <button class="unselectable" ontouchstart="rev_on()" style="position: fixed;left: 50%; bottom: 30%; height:100px;width:100px;color: blue;background: url('down.jpg') no-repeat; background-size: 100px 100px;"></button>
+    <button class="unselectable" ontouchstart="left_on()" style="position: fixed;left: 42.5%; bottom: 45%; height:100px;width:100px;color: blue;background: url('left.jpg') no-repeat; background-size: 100px 100px;"></button>
+    <button class="unselectable" ontouchstart="right_on()" style="position: fixed;left: 57.5%; bottom: 45%; height:100px;width:100px;color: blue;background: url('right.jpg') no-repeat; background-size: 100px 100px;"></button>
+</div>
+
+<!-- 
+	Now we actually need to define the on() and off() functions. We can do that inside the script tags using JavaScript.
+-->
+<script>
+    var url = "http://192.168.4.1/"; // this is the url for the ESP32 server.
+
+    function stop_on() {
+        fetch(url + "stop-on")
+    }
+
+    function auto_on() {
+        fetch(url + "auto-on")
+    }
+
+    function manual_on() {
+        fetch(url + "manual-on")
+    }
+
+    function fwd_on() {
+        fetch(url + "fwd-on")
+    }
+
+    function rev_on() {
+        fetch(url + "rev-on")
+    }
+
+    function left_on() {
+        fetch(url + "left-on");
+    }
+
+    function right_on() {
+        fetch(url + "right-on");
+    }
+
+    function on() {
+        fetch(url + "turn-on") // this'll send the "turn-on" request to the ESP32 } function off() { fetch(url + "turn-off") // this 'll send the "turn-off" request to the ESP32
+    }
+</script>
+
+</html>
